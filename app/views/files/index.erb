@@ -1,0 +1,28 @@
+<h1>GoooleDriveAPIサンプル</h1>
+
+<h2>新規アップロード</h2>
+<%= form_tag '/file/upload', method: 'post', multipart: true do %>
+  <label>ファイル</label>
+  <%= file_field :fileupload, :file %>
+
+  <%= submit_tag 'Googleドライブにファイルをアップロードする' %>
+<% end %>
+
+<h2>ファイル一覧</h2>
+<table class="">
+  <thead>
+  <tr>
+    <th class="">ファイル名</th>
+    <th class="">更新日</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @result.files.each do |file| %>
+    <tr>
+      <td class=""><a href="<%= file.web_view_link %>"><%= file.name %></a></td>
+      <td class=""><%= file.modified_time %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
